@@ -26,7 +26,7 @@ const App = () => {
 
   useEffect(() => {
     const isBrowserLogin = localStorage.getItem("isLoggedIn");
-    if (isBrowserLogin == true) {
+    if (JSON.parse(isBrowserLogin) == true) {
       dispatch(testLogin());
     }
   }, []);
