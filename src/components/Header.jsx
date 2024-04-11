@@ -4,15 +4,15 @@ import SpotifyLogo from "../assets/SpotifyLogo.webp";
 //Redux Imports
 import { useSelector, useDispatch } from "react-redux";
 import { testLogout } from "../redux/features/userSlice";
+import { setMenu } from "../redux/features/menuSlice";
 
 const Header = () => {
-  const userData = useSelector((state) => state.user.name);
+  const menu = useSelector((state) => state.menu);
 
   const dispatch = useDispatch();
 
-  const [menu, setMenu] = useState(false);
   const logoutHandler = () => {
-    setMenu(!menu);
+    dispatch(setMenu());
     dispatch(testLogout());
   };
   return (
@@ -23,7 +23,7 @@ const Header = () => {
           src="https://cdn.auth0.com/avatars/st.png"
           alt="userAccount"
           className="w-12 rounded-full"
-          onClick={() => setMenu(!menu)}
+          onClick={() => dispatch(setMenu(!menu))}
         />
         {menu && (
           <div className="flex flex-col bg-white gap-2 absolute right-[-8px] border-[1px] laptop:right-0">
