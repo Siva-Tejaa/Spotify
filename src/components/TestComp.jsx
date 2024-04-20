@@ -7,14 +7,15 @@ import { getApiData } from "../redux/features/fetchApiSlice";
 const TestComp = () => {
   const { status, data, error } = useSelector((state) => state.getApi);
 
+  const { accessToken } = useSelector((state) => state.token);
+
   const dispatch = useDispatch();
 
   console.log(status);
 
   useEffect(() => {
     const url = "https://api.spotify.com/v1/browse/featured-playlists";
-    const authToken =
-      "BQBK_bE29RaMEhpBb2yjdaxYCuHDobYgOIa8HhPSswyBheP12v7yAjFHRXAG6njOaKXaMHxGEypFcLECgwIEp0aUOe3hs0HBMqugBYsEWLXxf0JMM_k";
+    const authToken = accessToken;
 
     dispatch(getApiData({ url, authToken }));
   }, []);

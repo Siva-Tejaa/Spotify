@@ -1,15 +1,15 @@
 import React from "react";
 import SpotifyLogo from "../assets/SpotifyLogo.webp";
 
+//Api
+import { SPOTIFY_AUTHORIZATION_URL } from "../utils/api/api";
+
 //Redux
 import { useDispatch } from "react-redux";
-import { testLogin } from "../redux/features/userSlice";
 
 const LoginPage = () => {
-  const dispatch = useDispatch();
-
-  const loginHandler = () => {
-    dispatch(testLogin());
+  const loginHandler = async () => {
+    window.location = SPOTIFY_AUTHORIZATION_URL;
   };
 
   return (

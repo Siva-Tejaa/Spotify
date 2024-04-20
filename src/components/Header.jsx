@@ -1,37 +1,71 @@
 import React, { useState } from "react";
 import SpotifyLogo from "../assets/SpotifyLogo.webp";
 
+//Router
+import { Link, useNavigate } from "react-router-dom";
+
 //Redux Imports
 import { useSelector, useDispatch } from "react-redux";
-import { testLogout } from "../redux/features/userSlice";
-import { setMenu } from "../redux/features/menuSlice";
+import { setMenu, settopActiveItem } from "../redux/features/menuSlice";
+import { clearAccessToken } from "../redux/features/accessTokenSlice";
+import { topNav } from "../utils/constants/constants";
 
 const Header = () => {
-  const menu = useSelector((state) => state.menu);
+  const { isMenuOpen, topActiveItem } = useSelector((state) => state.menu);
 
   const dispatch = useDispatch();
 
   const logoutHandler = () => {
     dispatch(setMenu());
-    dispatch(testLogout());
+    dispatch(settopActiveItem(""));
+    dispatch(clearAccessToken());
+  };
+
+  const topActiveItems = {
+    Account: "Account",
+    Profile: "Profile",
+    Settings: "Settings",
+  };
+
+  const topNavLinks = {
+    Account: "/account",
+    Profile: "/profile",
+    Settings: "/settings",
   };
   return (
     <header className="bg-[#121212] p-3 flex items-center justify-between">
-      <img src={SpotifyLogo} alt="Spotify" className="w-40" />
+      <Link to="/">
+        <img src={SpotifyLogo} alt="Spotify" className="w-40" />
+      </Link>
       <div className="relative cursor-pointer">
         <img
           src="https://cdn.auth0.com/avatars/st.png"
           alt="userAccount"
           className="w-12 rounded-full"
-          onClick={() => dispatch(setMenu(!menu))}
+          onClick={() => dispatch(setMenu(!isMenuOpen))}
         />
-        {menu && (
-          <div className="flex flex-col bg-white gap-2 absolute right-[-8px] border-[1px] laptop:right-0">
-            <span className="px-10 py-2 hover:bg-[#e2dede]">Account</span>
-            <span className="px-10 py-2 hover:bg-[#e2dede]">Profile</span>
-            <span className="px-10 py-2 hover:bg-[#e2dede]">Settings</span>
+        {isMenuOpen && (
+          <div className="flex flex-col bg-[#121212] text-[#B3B3B3] border border-solid border-[#383838] gap-2 absolute right-[-8px] laptop:right-0">
+            {topNav.map((nav) => (
+              //
+              <Link
+                to={topNavLinks[nav?.title]}
+                key={nav?.id}
+                className={
+                  topActiveItems[topActiveItem] == nav?.title
+                    ? "text-white font-[700] px-10 py-2 hover:bg-[#383838]"
+                    : "px-10 py-2 font-[700] hover:bg-[#383838]"
+                }
+                onClick={() => {
+                  dispatch(setMenu(!isMenuOpen));
+                }}
+              >
+                {nav?.title}
+              </Link>
+            ))}
+
             <span
-              className="px-10 py-2 hover:bg-[#e2dede]"
+              className="px-10 py-2 font-[700] hover:bg-[#383838]"
               onClick={logoutHandler}
             >
               Logout

@@ -1,20 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = false;
+const initialState = {
+  isMenuOpen: false,
+  topActiveItem: "",
+};
 
 const menuSlice = createSlice({
   name: "menu",
   initialState,
   reducers: {
     setMenu: (state, action) => {
-      return !state;
+      state.isMenuOpen = !state.isMenuOpen;
     },
 
     closeMenu: (state, action) => {
-      return (state = false);
+      state.isMenuOpen = false;
+    },
+
+    settopActiveItem: (state, action) => {
+      state.topActiveItem = action.payload;
     },
   },
 });
 
-export const { setMenu, closeMenu } = menuSlice.actions;
+export const { setMenu, closeMenu, settopActiveItem } = menuSlice.actions;
 export default menuSlice.reducer;
