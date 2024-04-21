@@ -33,7 +33,8 @@ const Header = () => {
     Settings: "/settings",
   };
   return (
-    <header className="bg-[#121212] p-3 flex items-center justify-between">
+    // fixed top-0 left-0 right-0
+    <header className="bg-[#121212] p-3 flex items-center justify-between ">
       <Link to="/">
         <img src={SpotifyLogo} alt="Spotify" className="w-40" />
       </Link>
