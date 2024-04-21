@@ -17,6 +17,7 @@ import ProfilePage from "./pages/ProfilePage";
 import SettingsPage from "./pages/SettingsPage";
 import { settopActiveItem } from "./redux/features/menuSlice";
 import SearchPage from "./pages/SearchPage";
+import PlayListPage from "./pages/PlayListPage";
 
 const App = () => {
   const { accessToken, isLoggedIn } = useSelector((state) => state.token);
@@ -100,6 +101,15 @@ const App = () => {
         element={
           <AuthenticatedRoute>
             <SearchPage />
+          </AuthenticatedRoute>
+        }
+      />
+      <Route
+        exact
+        path={`/playlist/:playlistid`}
+        element={
+          <AuthenticatedRoute>
+            <PlayListPage />
           </AuthenticatedRoute>
         }
       />
