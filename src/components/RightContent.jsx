@@ -9,6 +9,7 @@ import {
 //React Icons
 import { GrInstallOption } from "react-icons/gr";
 import { IoNotifications } from "react-icons/io5";
+import FeaturedPlaylist from "./FeaturedPlaylist";
 
 const RightContent = () => {
   return (
@@ -29,10 +30,8 @@ const RightContent = () => {
         </p>
       </div>
       <div className="flex flex-col gap-2">
-        <AllPlaylists
-          listTitle="Featured Playlists"
-          playlists={featuredCharts}
-        />
+        <FeaturedPlaylist />
+        <AllPlaylists listTitle="Top Trending" playlists={featuredCharts} />
         <AllPlaylists
           listTitle="The Sound Of Spotify Places"
           playlists={theSoundOfSpotifyPlaces}

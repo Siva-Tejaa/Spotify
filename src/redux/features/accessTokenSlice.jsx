@@ -9,6 +9,7 @@ const accessTokenSlice = createSlice({
   name: "token",
   initialState,
   reducers: {
+    //Login
     setAccessToken: (state, action) => {
       state.accessToken = action.payload;
       state.isLoggedIn = true;
@@ -16,6 +17,7 @@ const accessTokenSlice = createSlice({
       localStorage.setItem("isLoggedIn", true);
     },
 
+    //Logout
     clearAccessToken: (state, action) => {
       state.accessToken = "";
       state.isLoggedIn = false;
