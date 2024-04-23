@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 
+import PlayLists from "../components/PlayLists";
+
 //Router
 import { useParams } from "react-router-dom";
 
@@ -18,7 +20,7 @@ const PlayListItems = () => {
   const { accessToken } = useSelector((state) => state.token);
   const { status, data, error } = useSelector((state) => state.getApi);
 
-  //   const { playListDetails } = useSelector((state) => state.playlist);
+  const { playListDetails } = useSelector((state) => state?.playList);
 
   const dispatch = useDispatch();
 
@@ -45,8 +47,9 @@ const PlayListItems = () => {
       {/* //Loading Status */}
       {status == "loading" && <LoadingScreen />}
 
-      <p>Data Loaded Successfully</p>
-      {/* {console.log(playListDetails)} */}
+      {/* //Data Loaded */}
+
+      {data?.description && <PlayLists />}
 
       {/* //Error Status */}
       {status == "error" && data?.error?.status == 401 && (
