@@ -5,6 +5,8 @@ import PlayLists from "../components/PlayLists";
 //Router
 import { useParams } from "react-router-dom";
 
+import { useLogoutHandler } from "./LogoutHandler";
+
 //Redux
 import { useSelector, useDispatch } from "react-redux";
 import { getApiData } from "../redux/features/fetchApiSlice";
@@ -15,6 +17,7 @@ import LoadingScreen from "./LoadingScreen";
 import { setPlayList } from "../redux/features/playListSlice";
 
 const PlayListItems = () => {
+  const logoutHandler = useLogoutHandler();
   const { playlistid } = useParams();
 
   const { accessToken } = useSelector((state) => state.token);

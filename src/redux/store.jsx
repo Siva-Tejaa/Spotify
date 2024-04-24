@@ -3,7 +3,8 @@ import menuSlice from "./features/menuSlice";
 import accessTokenSlice from "./features/accessTokenSlice";
 import fetchApiSlice from "./features/fetchApiSlice";
 import userSlice from "./features/userSlice";
-import setPlayList from "./features/playListSlice";
+import playListSlice from "./features/playListSlice";
+import audioSlice from "./features/audioSlice";
 
 const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
     token: accessTokenSlice,
     getApi: fetchApiSlice,
     user: userSlice,
-    playList: setPlayList,
+    playList: playListSlice,
+    audio: audioSlice,
   },
 });
 

@@ -1,8 +1,8 @@
 export const SPOTIFY_LOGIN_URL = `https://accounts.spotify.com/authorize?`;
 
-export const REDIRECT_URL_AFTER_LOGIN = `http://localhost:5173/callback`;
+// export const REDIRECT_URL_AFTER_LOGIN = `http://localhost:5173/callback`;
 
-// export const REDIRECT_URL_AFTER_LOGIN = `https://spotifytunes.vercel.app/callback`;
+export const REDIRECT_URL_AFTER_LOGIN = `https://spotifytunes.vercel.app/callback`;
 
 export const SCOPE = "user-read-private user-read-email";
 
