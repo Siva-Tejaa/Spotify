@@ -67,3 +67,10 @@
     box-shadow: -24px 0 #fff, 24px 0 #1ed760;
   }
 }
+
+table,
+th,
+td {
+  border: 1px solid #4b4b4b;
+  border-collapse: collapse;
+}

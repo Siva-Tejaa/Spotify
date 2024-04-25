@@ -62,7 +62,7 @@ const HomePage = () => {
       {/* //Success Status */}
       {/* {console.log(data)} */}
       {
-        <main className="bg-[#000000] text-white p-[5px] mb-16 laptop:p-4">
+        <main className="bg-[#000000] text-white p-[5px] mb-[75px] laptop:p-4">
           <section className="flex flex-col items-center gap-4 laptop:flex-row laptop:items-start">
             <LeftContent />
             <RightContent />

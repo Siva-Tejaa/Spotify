@@ -35,33 +35,47 @@ const Tracks = () => {
         <tbody>
           {tracks?.items?.map((item, index) => (
             <tr key={index}>
-              <td>{index + 1}</td>
-              <td
-                className="flex items-center gap-1 cursor-pointer"
-                onClick={() =>
-                  dispatch(
-                    setAudioTrack({
-                      track: item?.track?.preview_url,
-                      name: item?.track?.name,
-                    })
-                  )
-                }
-              >
-                <img
-                  src={item?.track?.album?.images[0]?.url}
-                  className="w-10 rounded-sm"
-                  alt="Track Image"
-                />
-                <div className="flex flex-col">
-                  <p>{item?.track?.name}</p>
-                  <p className="text-xs text-[#A7A7A7]">
-                    {item?.track?.artists[0]?.name}
-                  </p>
+              <td>
+                <p className="p-1 text-center">{index + 1}</p>
+              </td>
+              <td>
+                <div
+                  className="flex items-center gap-1 cursor-pointer p-1"
+                  onClick={() =>
+                    dispatch(
+                      setAudioTrack({
+                        track: item?.track?.preview_url,
+                        name: item?.track?.name,
+                      })
+                    )
+                  }
+                >
+                  <img
+                    src={item?.track?.album?.images[0]?.url}
+                    className="w-10 rounded-sm"
+                    alt="Track Image"
+                  />
+                  <div className="flex flex-col">
+                    <p className="playlist-desc">{item?.track?.name}</p>
+                    <p className="text-xs text-[#A7A7A7] playlist-desc">
+                      {item?.track?.artists[0]?.name}
+                    </p>
+                  </div>
                 </div>
               </td>
-              <td>{item?.track?.album?.name}</td>
-              <td>{moment(item?.added_at, "YYYYMMDD").fromNow()}</td>
-              <td>{formatDuration(item?.track?.duration_ms)}</td>
+              <td>
+                <p className="playlist-desc p-1">{item?.track?.album?.name}</p>
+              </td>
+              <td>
+                <p className="playlist-desc p-1 text-center">
+                  {moment(item?.added_at, "YYYYMMDD").fromNow()}
+                </p>
+              </td>
+              <td>
+                <p className="p-1 text-center">
+                  {formatDuration(item?.track?.duration_ms)}
+                </p>
+              </td>
             </tr>
           ))}
         </tbody>

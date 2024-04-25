@@ -158,3 +158,24 @@ export const library = [
     button: "Browse podcasts",
   },
 ];
+
+export const loginMails = [
+  {
+    email: "fejagir838@togito.com",
+  },
+  {
+    email: "xahiwo9851@picdv.com",
+  },
+  {
+    email: "nilojes488@haislot.com",
+  },
+  {
+    email: "mogor34282@picdv.com",
+  },
+  {
+    email: "lalivo1195@haislot.com",
+  },
+  {
+    email: "jakof46167@idsho.com",
+  },
+];
